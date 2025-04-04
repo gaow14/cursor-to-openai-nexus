@@ -1,13 +1,15 @@
-FROM node:lts-alpine
-
+FROM node:18-alpine
 WORKDIR /app
 
-COPY package.json package-lock.json ./
+# 安装Python和Git
+RUN apk add --no-cache python3 py3-pip git
+RUN pip install gradio
 
+# 复制项目文件
+COPY package.json .
 RUN npm install
+COPY . .
 
-COPY . /app
-
-EXPOSE 3010
-
-CMD ["npm", "run", "start"]
+# 设置启动命令
+EXPOSE 7860
+CMD ["sh", "-c", "npm start & sleep 10 && python /app/huggingface/app.py"]
