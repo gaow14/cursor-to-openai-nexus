@@ -1,3 +1,12 @@
+---
+title: AI助手
+emoji: 🚀
+colorFrom: pink
+colorTo: purple
+sdk: docker
+app_file: huggingface/app.py
+pinned: false
+---
 # Cursor-To-OpenAI
 
 将Cursor的API请求转发到OpenAI，支持多个API Key轮询，自动刷新Cookie。
